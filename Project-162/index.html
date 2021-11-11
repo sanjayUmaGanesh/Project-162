@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Shooting Game in Virtual Reality</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>   
+    <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
+    <script src="https://unpkg.com/aframe-physics-extras@0.1.2/dist/aframe-physics-extras.min.js" ></script>
+    <script src="components/shoot.js"></script>
+    
+    
+  </head>
+  <body>
+    <a-scene id="scene">
+
+      <!--Assets-->
+      <a-assets timeout="10000">
+
+          <a-asset-item
+          id="bowling-pin"
+          src="./models/pin model/scene.gltf"
+          ></a-asset-item>
+
+          <a-assets-item
+          id="pit-obj"
+          src="./models/pit model/tinker.obj"
+          ></a-assets-item>
+
+          <a-assets-item
+          id="pit-mtl"
+          src="./models/pit model/obj.mtl"
+          ></a-assets-item>
+
+
+      </a-assets>
+      
+    
+
+      <!--Camera and Cursor-->
+      <a-entity
+        id="camera"
+        camera
+        wasd-controls-enabled = "false"
+        position="0 3 25"
+        look-controls="pointerLockEnabled: true"        
+      >
+        
+     <a-cursor></a-cursor> 
+      </a-entity>
+
+      <!--balls-->
+      <a-entity ball></a-entity>
+
+      <!--Ground-->
+      <a-plane
+        id="ground"
+        repeat="5 5"
+        position="0 1 0"
+        rotation="-90 0 0"
+        height="40"
+        width="9"
+        src = "wood.jpg"
+        static-body
+        visible="true"
+      >
+      </a-plane>
+
+        <a-plane
+        id="ground"
+        repeat="5 5"
+        position="0 1 40"
+        rotation="-90 0 0"
+        height="50"
+        width="9"
+        src = "wood.jpg"
+        static-body
+        visible="true"
+      >
+    </a-plane>
+      <!--side railings-->
+
+      <a-box id = "siderailings" position="4.5 1.5 20" color = "red" depth = "80" height = "1" width = "0.1" static-body></a-box>
+      <a-box id = "siderailings" position="-4.5 1.5 20" color = "red" depth = "80" height = "1" width = "0.1" static-body></a-box>
+
+      <!-- Pit -->
+      <a-box id ="pit-base" position = "0 0 -20" color = "black" width = "20" height = "1" depth = "20" static-body></a-box>
+      <a-box id ="pit" obj-model = "obj: #pit-obj; mtl: #pit-mtl" position = "-0.4 1 -12.3" scale = "0.2 0.2 0.2" rotation = "-90 0 0" static-body></a-box>
+      <!--Boxes-->
+
+      <!-- First Row (4 pins) -->
+
+      <a-box id = "pin1" position="1.5 02 -19.5"  gltf-model="#bowling-pin" scale="5 5 5" depth="0.1" height="0.1" width="0.1" dynamic-body="mass:0.01"></a-box>
+
+      <a-box id = "pin2" position="0.5 02 -19.5"  gltf-model="#bowling-pin" scale="5 5 5" depth="0.1" height="0.1" width="0.1" dynamic-body="mass:0.1"></a-box>
+
+      <a-box id = "pin3" position="-0.5 02 -19.5"  gltf-model="#bowling-pin" scale="5 5 5" depth="0.1" height="0.1" width="0.1" dynamic-body="mass:0.1"></a-box>
+
+      <a-box id = "pin4" position="-1.5 02 -19.5"  gltf-model="#bowling-pin" scale="5 5 5" depth="0.1" height="0.1" width="0.1" dynamic-body="mass:0.1"></a-box>
+
+      <!-- Second Row (3 pins) -->
+
+      <a-box id = "pin5" position="-1 02 -18.5"  gltf-model="#bowling-pin" scale="5 5 5" depth="0.1" height="0.1" width="0.1" dynamic-body="mass:0.1"></a-box>
+
+      <a-box id = "pin6" position="0 02 -18.5"  gltf-model="#bowling-pin" scale="5 5 5" depth="0.1" height="0.1" width="0.1" dynamic-body="mass:0.1"></a-box>
+
+      <a-box id = "pin7" position="1 02 -18.5"  gltf-model="#bowling-pin" scale="5 5 5" depth="0.1" height="0.1" width="0.1" dynamic-body="mass:0.1"></a-box>
+
+      <!-- Third Row (2 pins) -->
+
+      <a-box id = "pin8" position="-0.5 02 -17.5"  gltf-model="#bowling-pin" scale="5 5 5" depth="0.1" height="0.1" width="0.1" dynamic-body="mass:0.1"></a-box>
+
+      <a-box id = "pin9" position="0.5 02 -17.5"  gltf-model="#bowling-pin" scale="5 5 5" depth="0.1" height="0.1" width="0.1" dynamic-body="mass:0.1"></a-box>
+
+      <!-- Fourth Row (1 pin) -->
+
+      <a-box id = "pin10" position="0 02 -16.5" gltf-model="#bowling-pin" scale="5 5 5" depth="0.1" height="0.1" width="0.1" dynamic-body="mass:0.1"></a-box> -->
+    </a-scene>
+  </body>
+</html>
